@@ -201,26 +201,50 @@ See if you can answer these questions:
 
 1. How many movies were released in 1995?
 
-```{r}
+The amount of movies that were released in 1995 is 35.
 
+```{r}
+movies_1995 <- movies %>%    
+  filter(year >= 1995 & Action == 1) %>%
+  drop_na(budget) %>%
+  select(title, rating, year)
+
+movies_1995
 ```
 
 2. Which Comedies with an MPAA rating, over 120 minutes have a rating above 8?
 
-```{r}
+There are zero comedies with an MPAA rating of over 8.0 and is also 120 minutes. 
 
+```{r}
+movies_1995 <- movies %>%    
+  filter(year >= 1995 & Action == 1) %>%
+  drop_na(budget) %>%
+  select(Comedy, title, rating, length,)
+
+movies_1995
 ```
 
 3. Create a subset of only Harry Potter movies with the title, rating, budget, and votes. Which movies are included in this data? Which is highest rated? Which has the most votes on imdb.com?
 
-```{r}
+There are only three movies included in the list that are harry potter movies and these are Harry Potter and the chamber of secrets, Harry potter and the prisoner of azkaban, and harry potter and the sorcerer's stone. The highest rates is Harry potter and the prisoner of Azkaban. The one with the most votes is Harry Potter and the Sorcerer's stonne. 
 
+```{r}
+movies %>%
+  filter(str_detect(title, "Harry Potter"))
 ```
 
 4. What is the highest budget for a movie that is an Animation or Comedy with at least 100 votes?
 
-```{r}
+The highest budget for a movie that is either an animation or comedy is with at least 100 votes is 95000000.
 
+```{r}
+movies_1995 <- movies %>%    
+  filter(year >= 1995 & Action == 1) %>%
+  drop_na(budget) %>%
+  select(Comedy,Animation, title, votes, budget)
+
+movies_1995
 ```
 
 5. Is your favorite movie in the dataset? What other questions could you ask or answer using `filter()`, `select()`, and `arrange()`?
